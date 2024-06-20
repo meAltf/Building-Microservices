@@ -3,6 +3,7 @@ package com.alataf.springboot.controller;
 import com.alataf.springboot.bean.Student;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -36,6 +37,16 @@ public class StudentController {
     public Student studentPathVariable(@PathVariable("id") int studentId,
                                        @PathVariable("first-name") String firstName,
                                        @PathVariable("last-name") String lastName) {
+        return new Student(studentId, firstName, lastName);
+    }
+
+    //Spring boot REST API with Request Param
+    // http://localhost:8080/student/query?id={id_value_given_user}
+    // http://localhost:8080/student/query?id=89&first-name=robert&last-name=broon
+    @GetMapping("/student/query")
+    public Student studentRequestParam(@RequestParam("id") int studentId,
+                                       @RequestParam("first-name") String firstName,
+                                       @RequestParam("last-name") String lastName) {
         return new Student(studentId, firstName, lastName);
     }
 
