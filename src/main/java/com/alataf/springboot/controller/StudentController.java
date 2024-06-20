@@ -2,6 +2,7 @@ package com.alataf.springboot.controller;
 
 import com.alataf.springboot.bean.Student;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -26,6 +27,16 @@ public class StudentController {
         studentList.add(new Student(5, "wane", "killson"));
 
         return studentList;
+    }
+
+    //Spring boot REST API with Path variable
+    // {id} - URI template variable
+    // whenever you've same variableName in URI and method variable then no need to specify variable name inside @PathVariable
+    @GetMapping("/student/{id}/{first-name}/{last-name}")
+    public Student studentPathVariable(@PathVariable("id") int studentId,
+                                       @PathVariable("first-name") String firstName,
+                                       @PathVariable("last-name") String lastName) {
+        return new Student(studentId, firstName, lastName);
     }
 
 }
