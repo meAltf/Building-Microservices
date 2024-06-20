@@ -2,6 +2,9 @@ package com.alataf.springboot.bean;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 public class Student {
     private Integer id;
