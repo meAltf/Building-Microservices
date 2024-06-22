@@ -1,10 +1,8 @@
 package com.alataf.springboot.controller;
 
 import com.alataf.springboot.bean.Student;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +46,18 @@ public class StudentController {
                                        @RequestParam("first-name") String firstName,
                                        @RequestParam("last-name") String lastName) {
         return new Student(studentId, firstName, lastName);
+    }
+
+    // Spring boot REST API that handles HTTP POST Request
+    // @POST mapping , @RequestBody
+    @PostMapping("/students/create")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Student createStudent(@RequestBody Student student) {
+        // To check values in console, i used sout.
+        System.out.println(student.getId());
+        System.out.println(student.getFirstName());
+        System.out.println(student.getLastName());
+        return student;
     }
 
 }
