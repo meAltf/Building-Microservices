@@ -69,4 +69,11 @@ public class StudentController {
         return student;
     }
 
+    // Spring boot REST API that handles HTTP DELETE request - to delete existing resource
+    @DeleteMapping("/students/{id}/delete")
+    public String deleteStudent(@PathVariable(value = "id") int studentId) {
+        System.out.println(studentId);
+        return "Student deleted successfully";
+    }
+
 }
